@@ -6,4 +6,20 @@
 
 {% block content %}
     <h1>Hello This is all-jinja page</h1>
+
+<div class="grid grid-cols-4 gap-2 m-5">
+{% for chai in chais %}
+  <div class="chai-item bg-blue-600 p-5 rounded shadow-sm ">
+     <img class="h-20 w-20 rounded-md " src="{{ chai.image.url }}" alt="{{ chai.name }}"> {% comment %}loading images from database {% endcomment %}
+    <h3>{{ chai.name }}</h3>
+    <a href="{% url 'chai_description' chai.id %}">
+        <button class="bg-orange-500 rounded p-1 text-sm inline-flex ">
+            {{chai.type}} - {{chai.id}}
+        </button>
+    </a>
+  </div>
+{% endfor %}
+</div>
+
 {% endblock %}
+
